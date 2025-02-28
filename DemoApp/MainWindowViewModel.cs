@@ -1,40 +1,40 @@
-﻿using DemoApp.Mvvm.ViewModelBase;
+﻿using DemoApp.Helpers;
+using DemoApp.Mvvm.ViewModel;
+using DemoApp.Settings;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using DemoApp.Helpers;
 
 namespace DemoApp
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ObservableObject
     {
-        public MainWindowViewModel()
-        {
-            Languages = new ObservableCollection<string>(_languages.Keys);
-            CurrentLanguage = "English";
-        }
+        private readonly IUserSettings _userSettings;
 
-        private readonly Dictionary<string, string> _languages = new()
+        public MainWindowViewModel(IUserSettings userSettings)
         {
-            { "Chinese (Simplified)", "zh-hans" },
-            { "Chinese (Traditional)", "zh-hant" },
-            { "English", "" },
-            { "French", "fr" },
-            { "Spanish", "es" },
-        };
+            _userSettings = userSettings;
+
+            Languages = new ObservableCollection<string>(Constants.Languages.Keys);
+            SelectedLanguage = Constants.Languages.FirstOrDefault(lang => lang.Value.Equals(userSettings.Language)).Key ?? "English";
+
+            LocalizationSource.Instance.CurrentCulture = new CultureInfo(userSettings.Language);
+        }
 
         public ObservableCollection<string> Languages { get; }
 
-        private string _currentLanguage = string.Empty;
+        private string _selectedLanguage = string.Empty;
 
-        public string CurrentLanguage
+        public string SelectedLanguage
         {
-            get => _currentLanguage;
+            get => _selectedLanguage;
             set
             {
-                if (SetField(ref _currentLanguage, value))
-                {
-                    LocalizationSource.Instance.CurrentCulture = new CultureInfo(_languages[value]);
-                }
+                if (_selectedLanguage == value)
+                    return;
+
+                LocalizationSource.Instance.CurrentCulture = new CultureInfo(Constants.Languages.GetValueOrDefault(value, "en"));
+                _userSettings.Language = Constants.Languages.GetValueOrDefault(value, "en");
+                _selectedLanguage = value;
             }
         }
     }

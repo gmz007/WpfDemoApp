@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DemoApp.Mvvm.ViewModelBase
+namespace DemoApp.Mvvm.ViewModel
 {
-    public class ViewModelBase : IViewModelBase
+    public class ObservableObject : IObservableObject
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
