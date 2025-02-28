@@ -15,9 +15,11 @@ namespace DemoApp
 
         private readonly Dictionary<string, string> _languages = new()
         {
+            { "Chinese (Simplified)", "zh-hans" },
+            { "Chinese (Traditional)", "zh-hant" },
             { "English", "" },
-            { "Simplified Chinese", "zh-hans" },
-            { "Traditional Chinese", "zh-hant" },
+            { "French", "fr" },
+            { "Spanish", "es" },
         };
 
         public ObservableCollection<string> Languages { get; }
