@@ -22,7 +22,7 @@
                 Width="160"
                 Height="24"
                 ItemsSource="{Binding Languages}"
-                SelectedItem="{Binding CurrentLanguage}" />
+                SelectedItem="{Binding SelectedLanguage}" />
         </StackPanel>
         
         <Label

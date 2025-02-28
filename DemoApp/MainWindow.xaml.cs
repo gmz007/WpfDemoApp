@@ -10,7 +10,7 @@ namespace DemoApp
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new MainWindowViewModel(App.Current.UserSettings);
         }
     }
 }
