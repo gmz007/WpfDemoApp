@@ -1,15 +1,26 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace DemoApp.Settings.Implementation
+namespace DemoApp.Settings
 {
     public class JsonSettingsDatabase : ISettingsDatabase
     {
         private string SettingsFile { get; }
 
-        public JsonSettingsDatabase(string filePath)
+        public JsonSettingsDatabase(string settingsDirectory, string settingsFile)
         {
-            SettingsFile = filePath;
+            SettingsFile = Path.Combine(settingsDirectory, settingsFile);
+
+            if (!Directory.Exists(settingsDirectory))
+            {
+                var di = Directory.CreateDirectory(settingsDirectory);
+                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+            }
+
+            if (!File.Exists(SettingsFile))
+            {
+                using var _ = File.Create(SettingsFile);
+            }
         }
 
         public TValue? GetValue<TValue>(string key, TValue? defaultValue = default)
@@ -39,21 +50,6 @@ namespace DemoApp.Settings.Implementation
 
         private Dictionary<string, object?> GetSettings()
         {
-            var fileInfo = new FileInfo(SettingsFile);
-
-            if (!fileInfo.Exists)
-            {
-                if (fileInfo.DirectoryName == null)
-                {
-                    return new Dictionary<string, object?>();
-                }
-
-                Directory.CreateDirectory(fileInfo.DirectoryName);
-
-                var fs = File.Create(fileInfo.FullName);
-                fs.Close();
-            }
-
             var data = File.ReadAllText(SettingsFile);
 
             if (string.IsNullOrWhiteSpace(data))
@@ -66,22 +62,7 @@ namespace DemoApp.Settings.Implementation
 
         private bool SaveSettings(Dictionary<string, object?> settings)
         {
-            var fileInfo = new FileInfo(SettingsFile);
-
-            if (!fileInfo.Exists)
-            {
-                if (fileInfo.DirectoryName == null)
-                {
-                    return false;
-                }
-
-                Directory.CreateDirectory(fileInfo.DirectoryName);
-
-                var fs = File.Create(fileInfo.FullName);
-                fs.Close();
-            }
-            
-            File.WriteAllText(fileInfo.FullName, JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
+            File.WriteAllText(SettingsFile, JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
             return true;
         }
 

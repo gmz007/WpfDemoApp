@@ -16,7 +16,7 @@ namespace DemoApp
 
         public static class Settings
         {
-            public const string SettingsDirectory = "settings";
+            public const string SettingsDirectory = ".settings";
 
             public const string UserSettingsFile = "user_settings.json";
         }

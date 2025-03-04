@@ -1,5 +1,4 @@
 ﻿using DemoApp.Settings;
-using DemoApp.Settings.Implementation;
 using System.IO;
 using System.Windows;
 
@@ -12,8 +11,10 @@ namespace DemoApp
     {
         public App()
         {
-            var userSettingsFilePath = Path.Combine(AppContext.BaseDirectory, Constants.Settings.SettingsDirectory, Constants.Settings.UserSettingsFile);
-            UserSettings = new UserSettings(new JsonSettingsDatabase(userSettingsFilePath));
+            UserSettings = new UserSettings(new JsonSettingsDatabase(
+                Path.Combine(AppContext.BaseDirectory, Constants.Settings.SettingsDirectory),
+                Constants.Settings.UserSettingsFile)
+            );
         }
 
         public new static App Current => (App)Application.Current;
