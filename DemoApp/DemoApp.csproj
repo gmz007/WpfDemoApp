@@ -2,11 +2,35 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assets\icons\china.png" />
+    <None Remove="assets\icons\france.png" />
+    <None Remove="assets\icons\hong-kong.png" />
+    <None Remove="assets\icons\spain.png" />
+    <None Remove="assets\icons\united-states.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\icons\china.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\icons\france.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\icons\hong-kong.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\icons\spain.png" />
+    <Resource Include="assets\icons\united-states.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Localization\Resources.Designer.cs">
