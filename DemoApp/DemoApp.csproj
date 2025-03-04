@@ -26,7 +26,9 @@
     <Resource Include="assets\icons\hong-kong.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="assets\icons\spain.png" />
+    <Resource Include="assets\icons\spain.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="assets\icons\united-states.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -42,7 +44,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Localization\Resources.en.resx">
-      <DependentUpon>Resources.resx</DependentUpon>
+	  <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="Localization\Resources.es.resx">
       <DependentUpon>Resources.resx</DependentUpon>

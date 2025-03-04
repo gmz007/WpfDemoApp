@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确认</value>
+  </data>
   <data name="Greetings" xml:space="preserve">
     <value>你好</value>
+  </data>
+  <data name="GreetingsDialogContent" xml:space="preserve">
+    <value>这是仅用于演示目的的占位符消息。此处的内容并非最终版本，应替换为实际文本。使用此空间显示相关信息。</value>
+  </data>
+  <data name="GreetingsDialogTitle" xml:space="preserve">
+    <value>标题</value>
   </data>
 </root>

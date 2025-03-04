@@ -61,11 +61,47 @@ namespace DemoApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello.
         /// </summary>
         internal static string Greetings {
             get {
                 return ResourceManager.GetString("Greetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a placeholder message for demonstration purposes only. The content here is not final and should be replaced with actual text. Use this space to display relevant information..
+        /// </summary>
+        internal static string GreetingsDialogContent {
+            get {
+                return ResourceManager.GetString("GreetingsDialogContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string GreetingsDialogTitle {
+            get {
+                return ResourceManager.GetString("GreetingsDialogTitle", resourceCulture);
             }
         }
     }

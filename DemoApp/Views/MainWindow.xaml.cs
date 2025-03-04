@@ -1,6 +1,7 @@
-﻿using System.Windows;
+﻿using DemoApp.Helpers;
 using DemoApp.ViewModels;
 using DemoApp.Views;
+using System.Windows;
 
 namespace DemoApp
 {
@@ -20,10 +21,10 @@ namespace DemoApp
             var dialog = new FluentDialog()
             {
                 Owner = this,
-                Title = "Title",
-                Content = "This is the content body.",
-                PrimaryButtonText = "Ok",
-                CloseButtonText = "Cancel",
+                Title = LocalizationSource.Instance["GreetingsDialogTitle"],
+                Content = LocalizationSource.Instance["GreetingsDialogContent"],
+                PrimaryButtonText = LocalizationSource.Instance["Confirm"],
+                CloseButtonText = LocalizationSource.Instance["Cancel"],
                 DefaultButton = FluentDialogButton.Primary
             };
 
