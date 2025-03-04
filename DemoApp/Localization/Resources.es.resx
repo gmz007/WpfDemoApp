@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
   <data name="Greetings" xml:space="preserve">
     <value>Hola</value>
+  </data>
+  <data name="GreetingsDialogContent" xml:space="preserve">
+    <value>Este es un mensaje provisional con fines demostrativos únicamente. El contenido que se incluye aquí no es definitivo y debe reemplazarse por el texto real. Utilice este espacio para mostrar información relevante.</value>
+  </data>
+  <data name="GreetingsDialogTitle" xml:space="preserve">
+    <value>Título</value>
   </data>
 </root>
