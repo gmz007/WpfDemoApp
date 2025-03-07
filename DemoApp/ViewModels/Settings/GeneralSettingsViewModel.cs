@@ -5,13 +5,13 @@ using DemoApp.Settings;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
-namespace DemoApp.ViewModels
+namespace DemoApp.ViewModels.Settings
 {
-    public class MainWindowViewModel : ObservableObject
+    public class GeneralSettingsViewModel : ObservableObject
     {
         private readonly IUserSettings _userSettings;
 
-        public MainWindowViewModel(IUserSettings userSettings)
+        public GeneralSettingsViewModel(IUserSettings userSettings)
         {
             _userSettings = userSettings;
 

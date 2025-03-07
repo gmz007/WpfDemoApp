@@ -1,0 +1,48 @@
+﻿<Window x:Class="DemoApp.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:settingViews="clr-namespace:DemoApp.Views.Settings"
+        xmlns:userControls="clr-namespace:DemoApp.UserControls"
+        xmlns:viewModels="clr-namespace:DemoApp.ViewModels"
+        xmlns:settingsViewModels="clr-namespace:DemoApp.ViewModels.Settings"
+        d:DataContext="{d:DesignInstance viewModels:SettingsViewModel, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="Settings"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Width="925"
+        Height="520">
+
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TreeView Grid.Column="0">
+            <TreeViewItem IsSelected="True">
+                <TreeViewItem.Header>
+                    <userControls:SettingsTreeViewItem IconCode="&#xE9E9;" Text="General"></userControls:SettingsTreeViewItem>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <userControls:SettingsTreeViewItem IconCode="&#xE9E9;" Text="Other"></userControls:SettingsTreeViewItem>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+        </TreeView>
+
+        <ContentControl
+            Grid.Column="1"
+            Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type settingsViewModels:GeneralSettingsViewModel}">
+                    <settingViews:GeneralSettingsView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>
+</Window>

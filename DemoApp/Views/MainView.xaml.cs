@@ -8,12 +8,14 @@ namespace DemoApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainView : Window
     {
-        public MainWindow()
+        private readonly MainViewModel _viewModel;
+
+        public MainView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(App.Current.UserSettings);
+            DataContext = _viewModel = new MainViewModel();
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
